@@ -1,7 +1,7 @@
 Package: sleeperapi
 Type: Package
 Title: Wrapper Functions Around 'Sleeper' (Fantasy Sports) API
-Version: 1.1.0
+Version: 1.1.1
 Authors@R: 
     c(person(given = "Nick",
              family = "Bultman",
@@ -16,8 +16,8 @@ Imports: httr, jsonlite, plotly, dplyr, purrr, scales, DT, shiny,
         htmltools, tidyr, stringr, rlang
 Suggests: testthat (>= 2.0.0), covr
 NeedsCompilation: no
-Packaged: 2024-05-15 02:05:38 UTC; njbul
+Packaged: 2024-06-01 20:13:10 UTC; njbul
 Author: Nick Bultman [aut, cre, cph]
 Maintainer: Nick Bultman <njbultman74@gmail.com>
 Repository: CRAN
-Date/Publication: 2024-05-15 02:40:03 UTC
+Date/Publication: 2024-06-01 21:00:02 UTC
