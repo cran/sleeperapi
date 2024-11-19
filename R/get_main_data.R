@@ -28,8 +28,11 @@ get_main_data <- function(league_id) {
     league_user_data <- get_league_users(league_id)
     # Remove league ID from league user data (already present in roster data)
     league_user_data$league_id <- NULL
-    # Rename avatar column (naming convention present in other data)
-    league_data <- dplyr::rename(league_data, "avatar_league" = "avatar")
+    # Check if avatar column is present in league data
+    if (any(names(league_data) == "avatar")) {
+      # If TRUE, rename (naming convention present in other data)
+      league_data <- dplyr::rename(league_data, "avatar_league" = "avatar")
+    }
     # Join roster data to league user data
     master_df_pre <- dplyr::left_join(roster_data,
                                       league_user_data,
@@ -52,18 +55,22 @@ get_main_data <- function(league_id) {
                                        as.numeric(substr(master_df$streak,
                                                          start = 1,
                                                          stop = 1)))
-    # Get the number of divisions
-    num_divisions <- max(master_df$division)
-    # Construct table for matching division number and division name
-    division_df <- data.frame()
-    for (i in 1:num_divisions) {
-      division_name <- unique(master_df[, paste0("division_", i)])
-      temp_df <- data.frame(division = c(i),
-                            division_name = c(division_name))
-      division_df <- dplyr::bind_rows(division_df, temp_df)
+    # Check if division column is present in master data
+    if (any(names(master_df) == "division")) {
+      # If TRUE, clean up division information
+      # Get the number of divisions
+      num_divisions <- max(master_df$division)
+      # Construct table for matching division number and division name
+      division_df <- data.frame()
+      for (i in 1:num_divisions) {
+        division_name <- unique(master_df[, paste0("division_", i)])
+        temp_df <- data.frame(division = c(i),
+                              division_name = c(division_name))
+        division_df <- dplyr::bind_rows(division_df, temp_df)
+      }
+      # Add division names column (currently only goes up to four)
+      master_df <- dplyr::left_join(master_df, division_df, by = "division")
     }
-    # Add division names column (currently only goes up to four)
-    master_df <- dplyr::left_join(master_df, division_df, by = "division")
     # Add ranking based on wins/losses and fantasy points for
     master_df$rank_fpts <- rank(-master_df$wins * 400
                                 + master_df$losses * 400

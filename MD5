@@ -1,4 +1,4 @@
-4061c0b1e5789bfe3144bc368f2b7273 *DESCRIPTION
+964d4180eb043b69f1cb89dc9772f176 *DESCRIPTION
 833bfd97be6d117157eaadf02fdf173e *LICENSE
 416579b3bb19fdc956592bc486c6b58a *NAMESPACE
 f071cf592245a2499930a44c23dbaa1e *R/get_all_nfl_players.R
@@ -10,7 +10,7 @@ c3497f6294bd940d482c32f3683a9f37 *R/get_draft_picks.R
 3e3eb52f7d8f7974d74b247770342e55 *R/get_league_drafts.R
 cf4cdd1aa67f08e9c88397731b00b1a4 *R/get_league_users.R
 86a60d6b5571b61540b271d65eeb25b5 *R/get_loser_playoff_bracket.R
-9ad2a246a3f9c107b8f5407055d71206 *R/get_main_data.R
+b0f91703e10426102e656ecd74506920 *R/get_main_data.R
 ba13e9c3d3709c38775955d4be1888f0 *R/get_matchups.R
 8f85a0472939766472cc4d8c5678a38c *R/get_rosters.R
 8c036b3131b117637b6c673dacf53a85 *R/get_sport_state.R
